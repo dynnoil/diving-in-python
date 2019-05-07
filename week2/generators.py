@@ -50,7 +50,8 @@ def accumulator():
     while True:
         value = yield total
         print('Got: {}'.format(value))
-        if not value: break
+        if not value:
+            break
         total += value
 
 
