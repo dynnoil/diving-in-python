@@ -70,3 +70,60 @@ event = Event.from_string('some event')
 print(event)
 
 assert dict.fromkeys('12') == {'1': None, '2': None}
+
+
+class Person:
+
+    def __init__(self, name, age=0):
+        self.name = name
+        self.age = age
+
+    @staticmethod
+    def is_age_valid(age):
+        return 0 < age < 150
+
+
+assert Person.is_age_valid(151) == False
+
+
+class Robot:
+
+    def __init__(self, power, robot_class=None):
+        self._power = power
+        self._robot_class = robot_class
+
+    power = property()
+
+    @power.setter
+    def power(self, value):
+        if value < 0:
+            self._power = 0
+        else:
+            self._power = value
+
+    @power.getter
+    def power(self):
+        return self._power
+
+    @power.deleter
+    def power(self):
+        del self._power
+
+    @property
+    def robot_class(self):
+        return self._robot_class
+
+
+wall_e = Robot(100)
+wall_e.power = -100
+assert wall_e.power == 0
+
+del wall_e.power
+
+try:
+    wall_e.power
+except AttributeError as error:
+    print(error)
+
+
+
