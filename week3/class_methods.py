@@ -67,6 +67,7 @@ class Event:
 
 
 event = Event.from_string('some event')
+event.from_string('dsfsdf')
 print(event)
 
 assert dict.fromkeys('12') == {'1': None, '2': None}
@@ -84,6 +85,9 @@ class Person:
 
 
 assert Person.is_age_valid(151) == False
+
+vlad = Person('Vlad')
+assert not vlad.is_age_valid(200)
 
 
 class Robot:
