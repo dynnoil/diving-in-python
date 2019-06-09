@@ -129,5 +129,5 @@ try:
 except AttributeError as error:
     print(error)
 
-
-
+d = {wall_e: 'Robot'}
+assert d[wall_e] == 'Robot'
